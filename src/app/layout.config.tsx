@@ -1,4 +1,6 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 /**
  * Shared layout configurations
@@ -11,15 +13,23 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <svg
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-label="Logo"
-        >
-          <circle cx={12} cy={12} r={12} fill="currentColor" />
-        </svg>
-        My App
+        <span className="flex items-center gap-2">
+          <Image
+            src="/Soplang-01.png"
+            width={24}
+            height={24}
+            alt="Soplang Logo"
+            className="block dark:hidden"
+          />
+          <Image
+            src="/Soplang-02.png"
+            width={24}
+            height={24}
+            alt="Soplang Logo"
+            className="hidden dark:block"
+          />
+          <span className="font-medium">Soplang</span>
+        </span>
       </>
     ),
   },
