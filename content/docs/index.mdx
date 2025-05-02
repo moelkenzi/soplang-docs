@@ -1,8 +1,111 @@
 ---
-title: Soplang
+title: Overview - Soplang
 ---
 
 ## <span className="text-sm">The First-Somali Programming Language</span>
 
 
 Soplang <span className='text-fd-muted-foreground text-sm'>(Somali Programming Language)</span> is an interpreted programming language that uniquely combines static and dynamic typing systems with syntax based on the Somali language. It is designed to lower the barrier to entry for Somali speakers learning to program while maintaining modern language features and paradigms.
+
+
+## Key Features
+
+Soplang implements a range of key features that define its unique position among programming languages:
+
+Feature| Description  
+---|---  
+**Dual Type System**| Combines static typing (`tiro`, `qoraal`, etc.) and dynamic typing (`door`) in one language  
+**Somali-based Syntax**| Programming concepts expressed in Somali (e.g., `qor` for print, `howl` for function)  
+**Multiple Paradigms**| Supports functional, procedural, and object-oriented programming  
+**Type Safety**| Enforces type checking at runtime  
+**Cross-platform**| Runs on `Windows`, `Linux`, and `macOS` with dedicated installers  
+**Interactive Shell**| REPL (Read-Eval-Print Loop) for quick experimentation or simply an `IDE/Playground`  
+  
+
+## System Architecture
+
+Soplang's architecture follows a traditional interpreter pattern with specialized components for the Somali language integration.
+
+
+The system features a layered architecture where:
+
+  * Users interact through the command-line interface (CLI) or interactive shell
+  * The core runtime processes Soplang code through lexing, parsing, and interpretation
+  * A distribution system generates platform-specific installers
+
+
+## Language Processing Pipeline
+
+Code execution in Soplang follows a three-stage pipeline common to many interpreted languages but specialized for Somali syntax.
+
+  1. **Lexer** : Transforms source code into tokens representing language elements (`keywords`, `operators`, etc.)
+  2. **Parser** : Builds an Abstract Syntax Tree (AST) from the token stream
+  3. **Interpreter** : Executes the AST to produce program output or perform actions
+
+
+## Code Example
+
+Below is a simple example of Soplang code that demonstrates the language's Somali syntax and dual type system:
+
+```js
+// Hello World in Soplang
+qor("Salaan, Adduunka!")  // Prints: Hello, World!
+
+// Dynamic typing
+door magac = "Sharafdin"  // Variable can change type later
+door num = 10
+num = "new value"         // Valid: type can change
+
+// Static typing
+qoraal name = "Sharafdin" // String only
+tiro age = 25             // Number only
+// age = "25"             // Would cause runtime error
+
+// Control flow
+haddii (age > 18) {
+    qor("Waa qof weyn")   // Is an adult
+} haddii_kalena {
+    qor("Waa qof yar")    // Is a child
+}
+
+// Functions
+qof = "Sharafdin"
+howl salaam(qof) {
+    soo_celi "Salaan, " + qof + "!"
+}
+qor(salaam(magac))        // Prints: Salaan, Sharafdin!
+```
+
+
+## Project Structure
+
+The Soplang project is organized as follows:
+
+
+## Using Soplang
+
+Soplang can be used in several ways:
+
+  1. **Interactive Shell** : Start a REPL session for immediate code execution
+
+  2. **Execute Soplang Files** : Run code from .sop or .so files
+
+  3. **Execute Code Snippets** : Run code directly from the command line
+
+  4. **Run Examples** : Execute bundled example programs
+
+
+
+
+
+## Development and Contributing
+
+The Soplang project includes a Makefile for common development tasks and follows a structured release process:
+
+
+Releases are managed through an automated process using GitHub Actions, with platform-specific builds for Windows, Linux, and macOS.
+
+
+## Conclusion
+
+Blah Blah Bla !!!

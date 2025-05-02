@@ -1,0 +1,158 @@
+---
+title: Language Implementation
+---
+
+
+## Execution Pipeline
+
+At a high level, Soplang follows a standard interpreter pattern with three main stages:
+
+  1. **Lexical Analysis** : The source code is tokenized into a stream of tokens by the Lexer
+  2. **Parsing** : The token stream is parsed into an Abstract Syntax Tree (AST) by the Parser
+  3. **Interpretation** : The AST is interpreted and executed by the Interpreter
+
+
+## Core Components
+
+### Lexer
+
+The Lexer is responsible for tokenizing the source code into a stream of tokens. It recognizes keywords, operators, literals, and identifiers in the source code.
+
+
+The Lexer class takes source code as input and produces a list of tokens. Each token has:
+
+  * A type (from the TokenType enumeration)
+  * A value (the actual text from the source code)
+  * Line and position information for error reporting
+
+
+
+Key functionality includes:
+
+  * Handling comments (both single-line `//` and multi-line `/* */`)
+  * Tokenizing identifiers, numbers, and strings
+  * Recognizing Somali keywords (like `door`, `howl`, `qor`)
+  * Tracking line and column numbers for error reporting
+
+
+### Parser
+
+The Parser processes tokens into an Abstract Syntax Tree (AST), which represents the hierarchical structure of the program.
+
+
+The Parser implements a recursive descent parsing algorithm with these key features:
+
+  * Building a tree of ASTNode objects representing the program structure
+  * Handling various statement types (variable declarations, function definitions, control flow)
+  * Parsing expressions with proper operator precedence
+  * Error reporting with user-friendly error messages
+
+
+### Interpreter
+
+The Interpreter executes the AST by traversing the tree and executing each node according to its type.
+
+
+The Interpreter's responsibilities include:
+
+  * Executing program statements and evaluating expressions
+  * Managing variable scopes and enforcing type checking
+  * Handling function calls (both built-in and user-defined)
+  * Implementing control flow (if statements, loops)
+  * Error handling and reporting
+
+
+
+## Execution Flow In Detail
+
+The following diagram shows the detailed execution flow from source code to running program:
+
+
+
+## Language Implementation Elements
+
+### Token Types
+
+Soplang defines various token types to represent elements in the language:
+
+Category| Token Types| Description  
+---|---|---  
+Keywords| `DOOR`, `HOWL`, `SOO_CELI`, `QOR`, etc.| Somali language keywords  
+Types| `TIRO`, `QORAAL`, `LABADARAN`, `LIIS`, `SHEY`| Static type declarations  
+Operators| `PLUS`, `MINUS`, `STAR`, `SLASH`, etc.| Mathematical and logical operators  
+Literals| `NUMBER`, `STRING`, `TRUE`, `FALSE`, `NULL`| Value literals  
+Syntax| `LEFT_PAREN`, `RIGHT_BRACE`, `SEMICOLON`, etc.| Syntax elements  
+  
+These token types are defined as an enum in [src/core/tokens.py1-69](https://github.com/soplang/soplang/blob/7b78cd5f/src/core/tokens.py#L1-L69) and are used by the lexer to categorize parts of the source code.
+
+
+### Node Types
+
+The AST is composed of nodes representing different program constructs:
+
+Category| Node Types| Description  
+---|---|---  
+Program Structure| `PROGRAM`, `BLOCK`, `IMPORT_STATEMENT`| High-level program organization  
+Declarations| `VARIABLE_DECLARATION`, `FUNCTION_DEFINITION`, `CLASS_DEFINITION`| Definitions of program elements  
+Statements| `IF_STATEMENT`, `LOOP_STATEMENT`, `WHILE_STATEMENT`, `RETURN_STATEMENT`| Control flow and execution flow  
+Expressions| `BINARY_OPERATION`, `UNARY_OPERATION`, `FUNCTION_CALL`| Operations and computations  
+Values| `LITERAL`, `IDENTIFIER`, `LIST_LITERAL`, `OBJECT_LITERAL`| Data and references  
+Access| `PROPERTY_ACCESS`, `METHOD_CALL`, `INDEX_ACCESS`| Accessing data elements  
+  
+
+### Variable Management
+
+The Interpreter manages variables with these key mechanisms:
+
+  1. **Variable Storage** : Variables are stored in a dictionary (`self.variables`)
+  2. **Type Information** : Static type information is stored in `self.variable_types`
+  3. **Type Checking** : For statically typed variables, type validation is performed on assignment
+  4. **Variable Lookup** : Variable resolution happens during expression evaluation
+
+
+
+The example below shows how variable declaration is handled:
+
+
+### Function Handling
+
+Functions in Soplang are defined and executed through these steps:
+
+  1. **Definition** : When a function is defined, its parameters and body are stored
+  2. **Invocation** : When called, arguments are bound to parameters in a new scope
+  3. **Execution** : The function body is executed in this new scope
+  4. **Return** : A return value is passed back to the caller
+
+
+
+### Error Handling
+
+Soplang implements comprehensive error handling with specialized error types:
+
+  1. **Lexer Errors** : Issues with tokenizing source code
+  2. **Parser Errors** : Issues with parsing the token stream
+  3. **Runtime Errors** : Issues during program execution
+  4. **Type Errors** : Type mismatch errors for statically typed variables
+
+
+
+All errors include line and position information for accurate reporting.
+
+
+## Integration With Other Components
+
+The language implementation interfaces with other components of the Soplang system:
+
+  1. **Command Line Interface** : The main entry point processes arguments and runs files
+  2. **Interactive Shell** : A REPL environment for interactive code execution
+  3. **Standard Library** : Built-in functions for common operations
+  4. **Error System** : Localized error messages in Somali
+
+
+
+Each component is designed to work together to provide a cohesive programming experience.
+
+
+## Summary
+
+Soplang's language implementation follows a traditional interpreter pattern with components for lexical analysis, parsing, and execution. The system is designed to be accessible to Somali developers while providing robust programming features including static and dynamic typing, functions, control flow structures, and error handling & blah blah ...

@@ -1,0 +1,258 @@
+---
+title: Installation Guide
+---
+
+
+## Installation Methods Overview
+
+Soplang can be installed using two primary methods:
+
+  1. **Pre-built installers** \- The recommended method for most users
+  2. **Building from source** \- For developers or custom installations
+
+
+
+
+
+## System Requirements
+
+Platform| Minimum Requirements  
+---|---  
+Windows| Windows 7 or later  
+Linux| Any modern distribution supporting Python 3.6+  
+macOS| macOS 10.13 (High Sierra) or later  
+  
+All platforms require approximately 50MB of disk space for the basic installation.
+
+
+
+## Installation Options Diagram
+
+
+
+## Installation from Pre-built Packages
+
+### Windows Installation
+
+  1. Download the Windows installer (`soplang-setup.exe`) from the official [Soplang](https://www.soplang.org/downloads) releases page.
+  2. Run the installer and follow the on-screen instructions
+  3. During installation, you can choose to: 
+     * Add Soplang to the PATH environment variable
+     * Create desktop and Start menu shortcuts
+     * Associate `.sop` files with Soplang
+
+
+
+After installation, you can run Soplang from:
+
+  * Cont...
+
+
+
+### Linux Installation
+
+#### Debian/Ubuntu and Derivatives
+
+  1. Download the `.deb` package from the official Soplang releases page
+
+  2. Install using: `sudo apt install soplang`
+
+  3. If there are dependency issues: `continue....`
+
+
+
+
+#### Fedora/RHEL and Derivatives
+
+  1. Download the `.rpm` package from the official Soplang releases page
+  2. Install using: `WIP`
+
+
+
+
+
+### macOS Installation
+
+  1. Download the Soplang disk image (`Soplang.dmg`) from the official Soplang releases page
+  2. Open the `.dmg` file
+  3. Drag `Soplang.app` to your Applications folder
+
+
+
+After installation, you can run Soplang by:
+
+  * Launching Soplang from the Applications folder or Dock
+
+
+
+
+
+### Building from Source
+
+To build the project from source, make sure your environment meets the following prerequisites based on your platform.
+
+#### Prerequisites
+
+| Platform | Required Tools |
+|----------|----------------|
+| **Windows** | - Python 3.6+<br/>- Git<br/>- Inno Setup 6 *(for installer)* |
+| **Linux**   | - Python 3.6+<br/>- pip3<br/>- ImageMagick *(for icons)*<br/>- dpkg-dev / rpm-build *(for packages)* |
+| **macOS**   | - Python 3.6+<br/>- pip3<br/>- create-dmg *(optional, for disk image)* |
+
+> 💡 **Tip:** Using a virtual environment is recommended to manage dependencies cleanly.
+
+---
+
+
+### Universal Build Process
+
+The easiest way to build Soplang on any platform is to use the universal build script:
+
+
+This script automatically detects your platform and runs the appropriate build script.
+
+
+
+### Platform-Specific Build Process
+
+
+
+#### Windows Build Details
+
+  1. Clone the repository:
+
+  2. Run the build script (PowerShell recommended):
+
+Or using Command Prompt:
+
+  3. After the build completes, you'll find:
+
+     * Standalone executable: `dist\soplang\soplang.exe`
+     * Windows installer: `windows\Output\soplang-setup.exe`
+  4. Run the installer to install Soplang on your system.
+
+
+
+
+
+#### Linux Build Details
+
+  1. Clone the repository:
+
+  2. Make the build script executable:
+
+  3. Run the build script:
+
+  4. After the build completes, you'll find:
+
+     * Standalone executable: `dist/soplang/soplang`
+     * Debian package (Debian-based systems): `linux/soplang_<version>_amd64.deb`
+     * RPM package (Red Hat-based systems): `linux/soplang-<version>.x86_64.rpm`
+  5. Install the appropriate package for your system.
+
+
+
+#### macOS Build Details
+
+  1. Clone the repository:
+
+  2. Make the build script executable:
+
+  3. Run the build script:
+
+  4. After the build completes, you'll find:
+
+     * App Bundle: `dist/Soplang.app`
+     * Disk Image (if create-dmg is installed): `macos/Soplang-<version>.dmg`
+  5. Drag `Soplang.app` to your Applications folder or run the DMG installer.
+
+
+
+## Build System Architecture
+
+## Verifying Your Installation
+
+After installing Soplang, verify that it's working properly:
+
+  1. Open a terminal or command prompt and run:
+
+You should see the Soplang version information.
+
+  2. Run a simple Soplang program:
+
+You should see the output: `Hello from Soplang!`
+
+  3. Try the interactive shell:
+
+You should see the Soplang welcome message and prompt.
+
+
+## File Associations and Environment Integration
+
+### Windows
+
+When installed with the default options, Soplang integrates with Windows by:
+
+  1. Registering `.sop` and `.so` file extensions
+  2. Adding context menu items to run and edit Soplang files
+  3. Creating Start menu shortcuts
+  4. Adding Soplang to the system PATH (optional)
+
+### Linux
+
+Linux installation creates:
+
+  1. Desktop entry in the application menu
+  2. MIME type associations for `.sop` and `.so` files
+  3. Command-line executable in PATH (`/usr/local/bin/soplang`)
+
+
+### macOS
+
+macOS installation creates:
+
+  1. Application bundle in the Applications folder
+  2. File type associations for `.sop` and `.so` files
+  3. Command-line executable at `/Applications/Soplang.app/Contents/MacOS/soplang`
+
+
+## Troubleshooting
+
+### Windows Troubleshooting
+
+  * **Missing Python** : Ensure Python is installed and added to PATH
+  * **Missing dependencies** : Run `pip install -r windows\requirements_windows.txt`
+  * **Inno Setup errors** : Ensure Inno Setup 6 is installed properly
+  * **PyInstaller errors** : Try `pip install --upgrade pyinstaller`
+  * **" Publisher: Unknown" warning**: This is normal if the installer isn't digitally signed
+  * **File association issues** : Ensure you selected the file association option during installation
+
+
+### Linux Troubleshooting
+
+  * **Missing Python** : Ensure Python 3.6+ is installed with `python3 --version`
+  * **Missing dependencies** : Run `pip3 install -r linux/requirements_linux.txt`
+  * **Permission issues** : Make sure scripts are executable with `chmod +x *.sh`
+  * **Package conflicts** : On Debian/Ubuntu, try `sudo apt --fix-broken install`
+  * **Executable not found** : Ensure Soplang is in your PATH or try running `/usr/bin/soplang`
+
+
+### macOS Troubleshooting
+
+  * **Build errors** : Make sure Python 3.6+ and pip are properly installed
+  * **Icon creation fails** : Ensure you're using a high-quality source image
+  * **App won 't open**: Check Console.app for logs about why the app was prevented from opening
+  * **" App is damaged"**: This is a security feature of macOS. Open System Preferences → Security & Privacy and click "Open Anyway" for Soplang
+  * **" Unknown developer" warning**: Control-click (or right-click) the app and select "Open" from the shortcut menu
+
+
+## Next Steps
+
+After installing Soplang, you can:
+
+  1. Learn the basics of Soplang language
+  2. Explore example programs
+  3. Create your first Soplang program
+  4. Run the interactive shell with `soplang`
+
+

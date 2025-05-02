@@ -1,0 +1,40 @@
+---
+title: Language Processing Pipeline
+---
+### <span className="text-sm font-normal">Lexer, Parser, and Interpreter</span>
+
+
+## Overview of the Language Processing Pipeline
+
+
+The Soplang language processing pipeline consists of three main stages:
+
+  1. **Lexer** : Tokenizes source code into a stream of tokens
+  2. **Parser** : Transforms tokens into an Abstract Syntax Tree (AST)
+  3. **Interpreter** : Executes the AST to produce program output
+
+
+
+The entire process is orchestrated in the [`run_soplang_file`](https://github.com/soplang/soplang/blob/7b78cd5f/src/runtime/main.py#L19-L68) function from the main module.
+    
+## From Somali to Code: Keyword Transformation
+
+
+This diagram shows how Somali programming keywords are transformed through the processing pipeline, from source code to execution. Each Somali keyword is mapped to a specific token type, which is then used by the parser to create the appropriate AST node.
+
+
+## Lexer: Tokenizing Source Code
+
+The Lexer transforms Soplang source code from raw text into a sequence of tokens, which are the atomic units of syntax that the parser can work with.
+
+### Lexer Structure
+
+
+The Lexer class is responsible for taking the source code as a string and converting it into a list of Token objects. Each token has:
+
+  * **type** : The category of the token (keyword, identifier, operator, etc.)
+  * **value** : The actual string or value represented by the token
+  * **line** : The line number in the source code
+  * **position** : The column position in the source code
+
+
