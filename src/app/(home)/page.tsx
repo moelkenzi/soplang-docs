@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Facebook, Github, Twitter, Linkedin, BookOpen, Languages, Blocks } from 'lucide-react';
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 mt-20">
+    <main className="flex flex-1 flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 mt-20 md:mt-0">
       <div className="max-w-3xl text-center space-y-6">
         <div className="flex items-center justify-center space-x-3 mb-8">
           <Image 
@@ -27,7 +28,7 @@ export default function HomePage() {
           The First-Somali Programming Language
         </p>
 
-        <p className="text-lg text-fd-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-fd-muted-foreground max-w-2xl mx-auto font-sans">
           An interpreted programming language that uniquely combines static and dynamic typing systems with syntax based on the Somali language.
         </p>
 
@@ -51,7 +52,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-fd-emphasis/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
             <div className="relative space-y-4">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-fd-emphasis/10 text-fd-emphasis">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 17V7c0-2-2-3-4-3-3 0-5 1-5 1v12c0 0 2 1 5 1 2 0 4-1 4-3Z"/><path d="M4 17V7c0-2 2-3 4-3 3 0 5 1 5 1"/></svg>
+                <BookOpen size={24} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Dual Type System</h3>
@@ -66,7 +67,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-fd-emphasis/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             <div className="relative space-y-4">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-fd-emphasis/10 text-fd-emphasis">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/><path d="M8 3v18"/></svg>
+                <Languages size={24} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Somali-based Syntax</h3>
@@ -81,7 +82,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-fd-emphasis/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             <div className="relative space-y-4">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-fd-emphasis/10 text-fd-emphasis">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v3"/><path d="M18 6.1H6"/><path d="m2.6 9.1 2.8-2.8"/><path d="m18.6 6.3 2.8 2.8"/><path d="M21.4 14.9 18.6 12"/><path d="m2.6 15 2.8 2.8"/><path d="M18 18h-6"/><path d="m12 21-2.8-2.8"/></svg>
+                <Blocks size={24} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">Multiple Paradigms</h3>
@@ -93,6 +94,53 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <footer className="w-full max-w-3xl mx-auto py-8 mt-16  border-t border-fd-border">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-fd-muted-foreground">
+          <div className="flex items-center justify-center gap-2">
+            <span> {new Date().getFullYear()} <span className="font-bold inline items-center justify-center ">Soplang</span> Software Foundation</span>
+            <span className="hidden md:inline">·</span>
+            <span>v0.1.0-alpha</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link
+              href="https://github.com/soplang"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-fd-emphasis transition-colors"
+            >
+              <span className="sr-only">GitHub</span>
+              <Github size={20} />
+            </Link>
+            <Link
+              href="https://twitter.com/soplangorg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-fd-emphasis transition-colors"
+            >
+              <span className="sr-only">Twitter</span>
+              <Twitter size={20} />
+            </Link>
+            <Link
+              href="https://facebook.com/soplangorg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-fd-emphasis transition-colors"
+            >
+              <span className="sr-only">Facebook</span>
+              <Facebook size={20} />
+            </Link>
+            <Link
+              href="https://linkedin.com/company/soplang"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-fd-emphasis transition-colors"
+            >
+              <span className="sr-only">LinkedIn</span>
+              <Linkedin size={20} />
+            </Link>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

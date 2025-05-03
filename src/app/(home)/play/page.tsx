@@ -22,7 +22,7 @@ const PlayPage = () => {
                 alt="Soplang"
                 width={24}
                 height={24}
-                className="inline items-center justify-center mr-3 dark:block"
+                className=" items-center justify-center mr-3 hidden dark:block"
             />
             <span className="font-black inline font-sans items-center justify-center mr-4">Soplang</span> Playground is Coming Soon - ❤️
         </div>
