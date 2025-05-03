@@ -2,6 +2,7 @@
   "name": "soplang-docs",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "bun@1.0.30",
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbo",
